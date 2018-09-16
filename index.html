@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Split Screen Slider</title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+</head>
+<body>
+    <section id="wrapper" class="skewed">
+        <div class="layer bottom">
+            <div class="content-wrap">
+                <div class="content-body">
+                    <h1>Look Sharp</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur architecto cumque fugit placeat assumenda illum debitis minima ducimus fuga enim quod nihil, ullam non vitae iusto repellat libero voluptate. Cumque.</p>
+                </div>
+                <img src="img/html.jpg">
+            </div>
+        </div>
+        <div class="layer top">
+            <div class="content-wrap">
+                <div class="content-body">
+                    <h1>Stay Cool</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur architecto cumque fugit placeat assumenda illum debitis minima ducimus fuga enim quod nihil, ullam non vitae iusto repellat libero voluptate. Cumque.</p>
+                </div>
+                <img src="img/css.jpg">
+            </div>
+        </div>
+        <div class="handle"></div>
+    </section>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+        let wrapper = document.getElementById('wrapper'),
+        topLayer = wrapper.querySelector('.top'),
+        handle = wrapper.querySelector('.handle'),
+        skew = 0, delta = 0;
+
+        if (wrapper.className.indexOf('skewed') != -1) {
+            skew = 1000;
+        }
+
+        wrapper.addEventListener('mousemove', function(e){
+            delta = (e.clientX - window.innerWidth / 2) * 0.5;
+            handle.style.left = e.clientX + delta + 'px';
+            topLayer.style.width = e.clientX + skew + delta + 'px';
+            });
+        });
+    </script>
+</body>
+</html>
